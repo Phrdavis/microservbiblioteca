@@ -1,24 +1,24 @@
 package br.univille.microservbiblioteca.logistica.entity;
 
+import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.format.annotation.DateTimeFormat;
 
-@Entity
+import br.univille.microservbiblioteca.catalogo.entity.Livro;
+
 public class RegistroEmprestimo{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
     private Livro id_livro;
     private UUID id_usuario;
     private Date inicio;
     private Date fim;
     private Date devolucao;
-    private DateTime registro;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private LocalDateTime registro;
 
     public RegistroEmprestimo() {}
 
@@ -74,7 +74,7 @@ public class RegistroEmprestimo{
         this.devolucao = devolucao;
     }
 
-    public DateTime getRegistro() {
+    public LocalDateTime getRegistro() {
         return registro;
     }
 

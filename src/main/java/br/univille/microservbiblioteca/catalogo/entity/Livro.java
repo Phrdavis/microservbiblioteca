@@ -1,17 +1,12 @@
 package br.univille.microservbiblioteca.catalogo.entity;
 
 import java.util.UUID;
+import br.univille.microservbiblioteca.domain.Status;
+import org.springframework.format.annotation.DateTimeFormat;
+import java.time.LocalDateTime;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Entity
 public class Livro{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
     private int codigo;
     private String nome;
@@ -19,15 +14,14 @@ public class Livro{
     private String editora;
     private String edicao;
     private String Genero;
+    private Status status;
 
-    @Enumerated(EnumType.STRING)
-    private StatusEstoque status;
-
-    private DateTime registro;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private LocalDateTime registro;
 
     public Livro() {}
 
-    public Livro(int codigo, String nome, String autor, String editora, String edicao, String Genero, String status) {
+    public Livro(int codigo, String nome, String autor, String editora, String edicao, String Genero, Status status) {
         this.codigo = codigo;
         this.nome = nome;
         this.autor = autor;
@@ -89,15 +83,15 @@ public class Livro{
         this.Genero = Genero;
     }
 
-    public StatusEstoque getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(StatusEstoque status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
-    public DateTime getRegistro() {
+    public LocalDateTime getRegistro() {
         return registro;
     }
 

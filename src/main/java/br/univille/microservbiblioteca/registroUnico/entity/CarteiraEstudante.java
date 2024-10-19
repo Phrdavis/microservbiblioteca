@@ -1,32 +1,27 @@
 package br.univille.microservbiblioteca.registroUnico.entity;
 
+import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue; 
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import org.springframework.format.annotation.DateTimeFormat;
 
-@Entity
+import br.univille.microservbiblioteca.domain.Status;
+
 public class CarteiraEstudante {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
 
     private UUID id_usuario;
     private Date validade;
+    private Status status;
 
-    @Enumerated(EnumType.STRING)
-    private StatusEstoque status;
-
-    private DateTime registro;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private LocalDateTime registro;
 
     public CarteiraEstudante() {}
 
-    public CarteiraEstudante(UUID id_usuario, Date validade, StatusEstoque status) {
+    public CarteiraEstudante(UUID id_usuario, Date validade, Status status) {
         this.id_usuario = id_usuario;
         this.validade = validade;
         this.status = status;
@@ -52,15 +47,15 @@ public class CarteiraEstudante {
         this.validade = validade;
     }
 
-    public StatusEstoque getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(StatusEstoque status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
-    public DateTime getRegistro() {
+    public LocalDateTime getRegistro() {
         return registro;
     }
 

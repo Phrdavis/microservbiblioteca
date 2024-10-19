@@ -1,24 +1,21 @@
 package br.univille.microservbiblioteca.pagamento.entity;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import br.univille.microservbiblioteca.logistica.entity.RegistroEmprestimo;
 
-@Entity
 public class RegistroPagamentoMulta{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
     private RegistroEmprestimo id_emprestimo;
     private double valorMulta;
     private double valorPago;
-    private DateTime registro;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private LocalDateTime registro;
 
     public RegistroPagamentoMulta() {}
 
@@ -56,7 +53,7 @@ public class RegistroPagamentoMulta{
         this.valorPago = valorPago;
     }
 
-    public DateTime getRegistro() {
+    public LocalDateTime getRegistro() {
         return registro;
     }
 
