@@ -2,7 +2,7 @@ package br.univille.microservbiblioteca.registroUnico.entity;
 
 import java.sql.Date;
 import java.time.LocalDateTime;
-import java.util.UUID;
+
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -10,9 +10,9 @@ import br.univille.microservbiblioteca.domain.Status;
 
 public class CarteiraEstudante {
 
-    private UUID id;
+    private String id;
 
-    private UUID id_usuario;
+    private String id_usuario;
     private Date validade;
     private Status status;
 
@@ -21,21 +21,21 @@ public class CarteiraEstudante {
 
     public CarteiraEstudante() {}
 
-    public CarteiraEstudante(UUID id_usuario, Date validade, Status status) {
+    public CarteiraEstudante(String id_usuario, Date validade, Status status) {
         this.id_usuario = id_usuario;
         this.validade = validade;
         this.status = status;
     }
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
-    public UUID getIdUsuario() {
+    public String getIdUsuario() {
         return id_usuario;
     }
 
-    public void setIdUsuario(UUID id_usuario) {
+    public void setIdUsuario(String id_usuario) {
         this.id_usuario = id_usuario;
     }
 

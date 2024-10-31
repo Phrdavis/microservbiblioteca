@@ -1,14 +1,14 @@
 package br.univille.microservbiblioteca.catalogo.entity;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
+
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class RegistroEstoque{
 
-    private UUID id;
-    private UUID id_livro;
+    private String id;
+    private String id_livro;
     private int quantidade;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
@@ -16,20 +16,20 @@ public class RegistroEstoque{
 
     public RegistroEstoque() {}
 
-    public RegistroEstoque(UUID id_livro, int quantidade) {
+    public RegistroEstoque(String id_livro, int quantidade) {
         this.id_livro = id_livro;
         this.quantidade = quantidade;
     }
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
-    public UUID getIdLivro() {
+    public String getIdLivro() {
         return id_livro;
     }
 
-    public void setIdLivro(UUID id_livro) {
+    public void setIdLivro(String id_livro) {
         this.id_livro = id_livro;
     }
 

@@ -1,7 +1,7 @@
 package br.univille.microservbiblioteca.pagamento.entity;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
+
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -9,7 +9,7 @@ import br.univille.microservbiblioteca.logistica.entity.RegistroEmprestimo;
 
 public class RegistroPagamentoMulta{
 
-    private UUID id;
+    private String id;
     private RegistroEmprestimo id_emprestimo;
     private double valorMulta;
     private double valorPago;
@@ -25,7 +25,7 @@ public class RegistroPagamentoMulta{
         this.valorPago = valorPago;
     }
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 

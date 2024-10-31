@@ -1,13 +1,12 @@
 package br.univille.microservbiblioteca.catalogo.entity;
 
-import java.util.UUID;
 import br.univille.microservbiblioteca.domain.Status;
 import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDateTime;
 
 public class Livro{
 
-    private UUID id;
+    private String id;
     private int codigo;
     private String nome;
     private String autor;
@@ -31,7 +30,7 @@ public class Livro{
         this.status = status;
     }
     
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 

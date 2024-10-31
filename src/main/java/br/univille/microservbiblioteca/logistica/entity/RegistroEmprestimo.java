@@ -2,7 +2,7 @@ package br.univille.microservbiblioteca.logistica.entity;
 
 import java.sql.Date;
 import java.time.LocalDateTime;
-import java.util.UUID;
+
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -10,9 +10,9 @@ import br.univille.microservbiblioteca.catalogo.entity.Livro;
 
 public class RegistroEmprestimo{
 
-    private UUID id;
+    private String id;
     private Livro id_livro;
-    private UUID id_usuario;
+    private String id_usuario;
     private Date inicio;
     private Date fim;
     private Date devolucao;
@@ -22,7 +22,7 @@ public class RegistroEmprestimo{
 
     public RegistroEmprestimo() {}
 
-    public RegistroEmprestimo(Livro id_livro, UUID id_usuario, Date inicio, Date fim, Date devolucao) {
+    public RegistroEmprestimo(Livro id_livro, String id_usuario, Date inicio, Date fim, Date devolucao) {
         this.id_livro = id_livro;
         this.id_usuario = id_usuario;
         this.inicio = inicio;
@@ -30,7 +30,7 @@ public class RegistroEmprestimo{
         this.devolucao = devolucao;
     }
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
@@ -42,11 +42,11 @@ public class RegistroEmprestimo{
         this.id_livro = id_livro;
     }
 
-    public UUID getIdUsuario() {
+    public String getIdUsuario() {
         return id_usuario;
     }
 
-    public void setIdUsuario(UUID id_usuario) {
+    public void setIdUsuario(String id_usuario) {
         this.id_usuario = id_usuario;
     }
 
