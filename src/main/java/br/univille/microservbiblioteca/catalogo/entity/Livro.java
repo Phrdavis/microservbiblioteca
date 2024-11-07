@@ -1,11 +1,22 @@
 package br.univille.microservbiblioteca.catalogo.entity;
 
 import br.univille.microservbiblioteca.domain.Status;
+
+import org.springframework.data.annotation.Id;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.azure.spring.data.cosmos.core.mapping.Container;
+import com.azure.spring.data.cosmos.core.mapping.GeneratedValue;
+import com.azure.spring.data.cosmos.core.mapping.PartitionKey;
+
 import java.time.LocalDateTime;
 
+@Container(containerName = "livro", autoCreateContainer = true)
 public class Livro{
 
+    @Id
+    @PartitionKey
+    @GeneratedValue
     private String id;
     private int codigo;
     private String nome;
