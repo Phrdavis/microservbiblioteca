@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import br.univille.microservbiblioteca.catalogo.entity.Livro;
 import br.univille.microservbiblioteca.catalogo.service.LivroService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
@@ -21,11 +23,26 @@ public class LivroAPIController {
     private LivroService service;
 
     @GetMapping
-    public ResponseEntity<List<Livro>> getLivros() {
+    public ResponseEntity<List<Livro>> get() {
 
         var listaAlunos = service.getAll();
 
         return new ResponseEntity<List<Livro>>(listaAlunos, HttpStatus.OK);
+
+    }
+
+    @PostMapping
+    public ResponseEntity<Livro> post(@RequestBody Livro livro) {
+
+        if(livro == null){
+
+            return new ResponseEntity<Livro>(livro, HttpStatus.BAD_REQUEST);
+
+        }
+
+        var livroSalvo = service.save(livro);
+
+        return new ResponseEntity<Livro>(livroSalvo, HttpStatus.CREATED);
 
     }
     
