@@ -40,9 +40,9 @@ public class RegistroEmprestimoAPIController {
 
         }
 
-        var livroSalvo = service.save(emprestimo);
+        var emprestimoSalvo = service.save(emprestimo);
 
-        return new ResponseEntity<RegistroEmprestimo>(livroSalvo, HttpStatus.CREATED);
+        return new ResponseEntity<RegistroEmprestimo>(emprestimoSalvo, HttpStatus.CREATED);
 
     }
     
