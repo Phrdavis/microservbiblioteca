@@ -35,4 +35,28 @@ public class RegistroEstoqueServiceImpl implements RegistroEstoqueService {
 
     }
 
+    @Override
+    public RegistroEstoque update(String id, RegistroEstoque estoque) {
+        var buscaEstoque = repository.findById(id);
+        if(buscaEstoque.isPresent()){
+            var estoqueAntigo = buscaEstoque.get();
+            //atualizo os atributos
+            estoqueAntigo.setNome(estoque.getNome());
+            repository.save(estoqueAntigo);
+            return estoqueAntigo;
+        }
+        return null;
+    }
+
+    @Override
+    public Aluno delete(String id) {
+        var buscaEstoque = repository.findById(id);
+        if(buscaEstoque.isPresent()){
+            var estoqueAntigo = buscaEstoque.get();
+            repository.delete(estoqueAntigo);
+            return estoqueAntigo;
+        }
+        return null;
+    }
+
 }

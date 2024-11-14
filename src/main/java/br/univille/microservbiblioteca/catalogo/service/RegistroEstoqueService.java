@@ -8,5 +8,7 @@ public interface RegistroEstoqueService {
 
     List<RegistroEstoque> getAll();
     RegistroEstoque save(RegistroEstoque estoque);
+    RegistroEstoque update(String id, RegistroEstoque estoque);
+    RegistroEstoque delete(String id);
     
 }
