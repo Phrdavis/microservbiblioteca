@@ -45,6 +45,48 @@ public class RegistroPagamentoMultaAPIController {
         return new ResponseEntity<RegistroPagamentoMulta>(multaSalva, HttpStatus.CREATED);
 
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<RegistroPagamentoMulta> put(@PathVariable("id") String id, @RequestBody RegistroPagamentoMulta multa){
+
+        if(id == null || id == "" || multa == null){
+
+            return new ResponseEntity<RegistroPagamentoMulta>(HttpStatus.BAD_REQUEST);
+
+        }
+
+        multa = service.update(id, multa);
+
+        if(multa == null){
+
+            return new ResponseEntity<RegistroPagamentoMulta>(HttpStatus.NOT_FOUND);
+
+        }
+
+        return new ResponseEntity<RegistroPagamentoMulta>(multa, HttpStatus.OK);
+
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<RegistroPagamentoMulta> delete(@PathVariable("id") String id){
+
+        if(id == null || id == ""){
+
+            return new ResponseEntity<RegistroPagamentoMulta>(HttpStatus.BAD_REQUEST);
+
+        }
+
+        var multa = service.delete(id);
+
+        if(multa == null){
+
+            return new ResponseEntity<RegistroPagamentoMulta>(HttpStatus.NOT_FOUND);
+
+        }
+
+        return new ResponseEntity<RegistroPagamentoMulta>(multa, HttpStatus.OK);
+
+    }
     
 
 }

@@ -34,5 +34,29 @@ public class RegistroEmprestimoServiceImpl implements RegistroPagamentoMultaServ
         return repository.save(multa);
 
     }
+
+    @Override
+    public RegistroPagamentoMulta update(String id, RegistroPagamentoMulta multa) {
+        var buscaMulta = repository.findById(id);
+        if(buscaMulta.isPresent()){
+            var multaAntiga = buscaMulta.get();
+            //atualizo os atributos
+            multaAntiga.setNome(multa.getNome());
+            repository.save(multaAntiga);
+            return multaAntiga;
+        }
+        return null;
+    }
+
+    @Override
+    public Aluno delete(String id) {
+        var buscaMulta = repository.findById(id);
+        if(buscaMulta.isPresent()){
+            var multaAntiga = buscaMulta.get();
+            repository.delete(multaAntiga);
+            return multaAntiga;
+        }
+        return null;
+    }
     
 }
