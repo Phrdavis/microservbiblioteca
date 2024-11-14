@@ -45,6 +45,48 @@ public class CarteiraEstudanteAPIController {
         return new ResponseEntity<CarteiraEstudante>(registroUnicoSalvo, HttpStatus.CREATED);
 
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<CarteiraEstudante> put(@PathVariable("id") String id, @RequestBody CarteiraEstudante registroUnico){
+
+        if(id == null || id == "" || registroUnico == null){
+
+            return new ResponseEntity<CarteiraEstudante>(HttpStatus.BAD_REQUEST);
+
+        }
+
+        registroUnico = service.update(id, registroUnico);
+
+        if(registroUnico == null){
+
+            return new ResponseEntity<CarteiraEstudante>(HttpStatus.NOT_FOUND);
+
+        }
+
+        return new ResponseEntity<CarteiraEstudante>(registroUnico, HttpStatus.OK);
+
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<CarteiraEstudante> delete(@PathVariable("id") String id){
+
+        if(id == null || id == ""){
+
+            return new ResponseEntity<CarteiraEstudante>(HttpStatus.BAD_REQUEST);
+
+        }
+
+        var registroUnico = service.delete(id);
+
+        if(registroUnico == null){
+
+            return new ResponseEntity<CarteiraEstudante>(HttpStatus.NOT_FOUND);
+
+        }
+
+        return new ResponseEntity<CarteiraEstudante>(registroUnico, HttpStatus.OK);
+
+    }
     
 
 }

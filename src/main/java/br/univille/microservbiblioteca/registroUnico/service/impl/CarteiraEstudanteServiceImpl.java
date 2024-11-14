@@ -34,5 +34,29 @@ public class CarteiraEstudanteServiceImpl implements CarteiraEstudanteService {
         return repository.save(registroUnico);
 
     }
+
+    @Override
+    public CarteiraEstudante update(String id, CarteiraEstudante registroUnico) {
+        var buscaRegistoUnico = repository.findById(id);
+        if(buscaRegistoUnico.isPresent()){
+            var registroUnicoAntigo = buscaRegistoUnico.get();
+            //atualizo os atributos
+            registroUnicoAntigo.setNome(registroUnico.getNome());
+            repository.save(registroUnicoAntigo);
+            return registroUnicoAntigo;
+        }
+        return null;
+    }
+
+    @Override
+    public Aluno delete(String id) {
+        var buscaRegistoUnico = repository.findById(id);
+        if(buscaRegistoUnico.isPresent()){
+            var registroUnicoAntigo = buscaRegistoUnico.get();
+            repository.delete(registroUnicoAntigo);
+            return registroUnicoAntigo;
+        }
+        return null;
+    }
     
 }
