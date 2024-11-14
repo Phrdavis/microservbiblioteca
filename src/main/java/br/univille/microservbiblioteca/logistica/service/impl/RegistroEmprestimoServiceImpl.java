@@ -34,5 +34,29 @@ public class RegistroEmprestimoServiceImpl implements RegistroEmprestimoService 
         return repository.save(emprestimo);
 
     }
+
+    @Override
+    public RegistroEmprestimo update(String id, RegistroEmprestimo emprestimo) {
+        var buscaEmprestimo = repository.findById(id);
+        if(buscaEmprestimo.isPresent()){
+            var emprestimoAntigo = buscaEmprestimo.get();
+            //atualizo os atributos
+            emprestimoAntigo.setNome(emprestimo.getNome());
+            repository.save(emprestimoAntigo);
+            return emprestimoAntigo;
+        }
+        return null;
+    }
+
+    @Override
+    public RegistroEmprestimo delete(String id) {
+        var buscaEmprestimo = repository.findById(id);
+        if(buscaEmprestimo.isPresent()){
+            var emprestimoAntigo = buscaEmprestimo.get();
+            repository.delete(emprestimoAntigo);
+            return emprestimoAntigo;
+        }
+        return null;
+    }
     
 }

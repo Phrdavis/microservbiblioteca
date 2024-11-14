@@ -45,6 +45,48 @@ public class RegistroEmprestimoAPIController {
         return new ResponseEntity<RegistroEmprestimo>(emprestimoSalvo, HttpStatus.CREATED);
 
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<RegistroEmprestimo> put(@PathVariable("id") String id, @RequestBody RegistroEmprestimo emprestimo){
+
+        if(id == null || id == "" || emprestimo == null){
+
+            return new ResponseEntity<RegistroEmprestimo>(HttpStatus.BAD_REQUEST);
+
+        }
+
+        emprestimo = service.update(id, emprestimo);
+
+        if(emprestimo == null){
+
+            return new ResponseEntity<RegistroEmprestimo>(HttpStatus.NOT_FOUND);
+
+        }
+
+        return new ResponseEntity<RegistroEmprestimo>(emprestimo, HttpStatus.OK);
+
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<RegistroEmprestimo> delete(@PathVariable("id") String id){
+
+        if(id == null || id == ""){
+
+            return new ResponseEntity<RegistroEmprestimo>(HttpStatus.BAD_REQUEST);
+
+        }
+
+        var emprestimo = service.delete(id);
+
+        if(emprestimo == null){
+
+            return new ResponseEntity<RegistroEmprestimo>(HttpStatus.NOT_FOUND);
+
+        }
+
+        return new ResponseEntity<RegistroEmprestimo>(emprestimo, HttpStatus.OK);
+
+    }
     
 
 }
