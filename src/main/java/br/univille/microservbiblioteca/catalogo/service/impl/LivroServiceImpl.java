@@ -34,5 +34,29 @@ public class LivroServiceImpl implements LivroService {
         return repository.save(livro);
 
     }
+
+    @Override
+    public Livro update(String id, Livro livro) {
+        var buscaLivro = repository.findById(id);
+        if(buscaLivro.isPresent()){
+            var livroAntigo = buscaLivro.get();
+            //atualizo os atributos
+            livroAntigo.setNome(livro.getNome());
+            repository.save(livroAntigo);
+            return livroAntigo;
+        }
+        return null;
+    }
+
+    @Override
+    public Aluno delete(String id) {
+        var buscaLivro = repository.findById(id);
+        if(buscaLivro.isPresent()){
+            var livroAntigo = buscaLivro.get();
+            repository.delete(livroAntigo);
+            return livroAntigo;
+        }
+        return null;
+    }
     
 }

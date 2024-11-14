@@ -45,6 +45,48 @@ public class LivroAPIController {
         return new ResponseEntity<Livro>(livroSalvo, HttpStatus.CREATED);
 
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Livro> put(@PathVariable("id") String id, @RequestBody Livro livro){
+
+        if(id == null || id == "" || livro == null){
+
+            return new ResponseEntity<Livro>(HttpStatus.BAD_REQUEST);
+
+        }
+
+        livro = service.update(id, livro);
+
+        if(livro == null){
+
+            return new ResponseEntity<Livro>(HttpStatus.NOT_FOUND);
+
+        }
+
+        return new ResponseEntity<Livro>(livro, HttpStatus.OK);
+
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Livro> delete(@PathVariable("id") String id){
+
+        if(id == null || id == ""){
+
+            return new ResponseEntity<Livro>(HttpStatus.BAD_REQUEST);
+
+        }
+
+        var livro = service.delete(id);
+
+        if(livro == null){
+
+            return new ResponseEntity<Livro>(HttpStatus.NOT_FOUND);
+
+        }
+
+        return new ResponseEntity<Livro>(livro, HttpStatus.OK);
+
+    }
     
 
 }
